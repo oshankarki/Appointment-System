@@ -35,8 +35,17 @@ Route::prefix('role')->name('role.')->group(function(){
     Route:: put('/{id}',[\App\Http\Controllers\RoleController::class,'update'])->name('update');
 });
 Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('home');
-Route::get('/registerDoctor',[\App\Http\Controllers\DoctorContoller::class,'doctorRegister'])->name('registerDoctor');
-Route::post('',[\App\Http\Controllers\DoctorContoller::class,'request'])->name('doctor.request');
+Route::get('/registerDoctor',[\App\Http\Controllers\DoctorController::class,'doctorRegister'])->name('registerDoctor');
+Route::post('',[\App\Http\Controllers\DoctorController::class,'request'])->name('doctor.request');
+Route::get('/approvedDoctors',[\App\Http\Controllers\SuperAdminContoller::class,'approveDoctors'])->name('doctors.approve');
+Route::patch('/toggle-approval/{id}', [\App\Http\Controllers\SuperAdminContoller::class, 'toggleApproval'])->name('toggle.approval');
+Route:: get('/{id}',[\App\Http\Controllers\DoctorController::class,'show'])->name('doctor.show');
+Route::get('/doctor/dashboard',[\App\Http\Controllers\DoctorController::class,'home'])->name('home');
+
+
+
+Route::get('/appointment/schedule',[\App\Http\Controllers\appoi::class,'home'])->name('home');
+
 
 
 

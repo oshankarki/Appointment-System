@@ -77,7 +77,7 @@ class RegisterController extends Controller
     {
         if (Auth::user()->role->name == 'patient') {
             return '/patient/home';
-        } else if (Auth::user()->role->name == "doctor") {
+        } else if (Auth::user()->role->name == 'doctor' && Auth::user()->app_status == 1) {
             return '/doctor/dashboard';
         }
         else if (Auth::user()->role->name == 'SuperAdmin') {

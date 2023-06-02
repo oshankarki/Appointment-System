@@ -19,7 +19,7 @@ class RoleSeeder extends Seeder
     {
         DB::table('roles')->insert([
             'id'=>1,
-            'name' => 'admin',
+            'name' => 'SuperAdmin',
         ]);
 
     }

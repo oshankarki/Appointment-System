@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>@yield('title')|Student</title>
+    <title>Doctor</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                 SuperAdmin
+                Doctor
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -69,7 +69,7 @@
                     @else
                         <li class="nav-item dropdown">
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                {{ Auth::user()->name }}
+                                Dr. {{ Auth::user()->name }}
                             </a>
 
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -109,25 +109,25 @@
                         </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Role</span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
+                                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Appointment </span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route("role.create")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Create</span></a>
+                                    <a href="{{route("appointment.schedule")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Schedule</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route("role.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">List</span></a>
+                                    <a href="{{route("appointments.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">View</span></a>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Manage Doctors</span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
+                                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">See Patients </span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route("doctors.approve")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Approved Doctors</span></a>
+                                    <a href="{{route("doctors.approve")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Approved Patients</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route("role.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">List</span></a>
+                                    <a href="{{route("role.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">List of Patients</span></a>
                                 </li>
                             </ul>
                         </li>
