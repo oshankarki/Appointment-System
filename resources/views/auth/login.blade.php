@@ -39,7 +39,7 @@
                         </div>
                     </form>
                     <p class="login-wrapper-footer-text">Don't have an account? <a href="{{route('register')}}" class="text-reset">Register here</a></p>
-                    <p class="login-wrapper-footer-text">Want to be a doctor? <a href="{{route('register')}}" class="text-reset">Register as a Doctor</a></p>
+                    <p class="login-wrapper-footer-text">Want to be a doctor? <a href="{{route('registerDoctor')}}" class="text-reset">Register as a Doctor</a></p>
 
                 </div>
             </div>

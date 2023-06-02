@@ -16,8 +16,8 @@
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
                 <div class="login-wrapper my-auto">
-                    <h3 class="login-title">Log in</h3>
-                    <form method="POST" action="{{ route('register') }}">
+                    <h3 class="login-title">Register as a doctor</h3>
+                    <form method="POST" action="{{ route('doctor.request') }}">
                         @csrf
                         <div class="form-group">
                             <label for="name">Name</label>
@@ -35,18 +35,15 @@
                         <div id="imagePreviewContainer" style="display: none;">
                             <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 200px; max-height: 200px;">
                         </div>
+
                         <div class="form-group">
-                            <p><input onchange="previewImage(this)" id="image" class="form-control" name="image" type="file"></p>
-                            <br>
-                        </div>
-                        <div class="form-group">
-                            <label for="password_confirm"> Confirm Password</label>
-                            <input type="password" name="password_confirmation" id="password-confirm" class="form-control" placeholder="Password">
+                            <label for="department">Department</label>
+                            <input type="department" name="department" id="department" class="form-control" placeholder="Department">
                         </div>
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-block login-btn">
-                                    {{ __('Register') }}
+                                    Request for approval
                                 </button>
                             </div>
                         </div>

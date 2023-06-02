@@ -35,4 +35,8 @@ Route::prefix('role')->name('role.')->group(function(){
     Route:: put('/{id}',[\App\Http\Controllers\RoleController::class,'update'])->name('update');
 });
 Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('home');
+Route::get('/registerDoctor',[\App\Http\Controllers\DoctorContoller::class,'doctorRegister'])->name('registerDoctor');
+Route::post('',[\App\Http\Controllers\DoctorContoller::class,'request'])->name('doctor.request');
+
+
 
