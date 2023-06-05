@@ -112,10 +112,10 @@
                                 <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Appointment </span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
                                 <li class="w-100">
-                                    <a href="{{route("appointment.schedule")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Schedule</span></a>
+                                    <a href="{{route('doctors.appointments.schedule')}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Schedule</span></a>
                                 </li>
                                 <li>
-                                    <a href="{{route("appointments.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">View</span></a>
+                                    <a href="" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">View</span></a>
                                 </li>
                             </ul>
                         </li>

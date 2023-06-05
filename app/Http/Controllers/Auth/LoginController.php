@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\MessageBag;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -41,14 +43,17 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-;       if (Auth::user()->role->name == 'patient') {
+        if (Auth::user()->role->name == 'patient') {
             return '/patient/home';
-        } else if (Auth::user()->role->name == 'doctor' && Auth::user()->app_status == 1) {
-            return '/doctor/dashboard';
+        } else if (Auth::user()->role->name == 'doctor') {
+            if(Auth::user()->app_status == 1){
+                return '/doctor/dashboard';
+            }else{
+                return redirect('/login')->back()->withErrors("You are not Verified Yet");
+//                return '/login';
+            }
         } else if (Auth::user()->role->name == 'SuperAdmin') {
-
             return '/home';
         }
     }
-
 }

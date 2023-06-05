@@ -39,7 +39,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                 SuperAdmin
+                SuperAdmin
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -126,9 +126,7 @@
                                 <li class="w-100">
                                     <a href="{{route("doctors.approve")}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Approved Doctors</span></a>
                                 </li>
-                                <li>
-                                    <a href="{{route("role.index")}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">List</span></a>
-                                </li>
+
                             </ul>
                         </li>
                     </ul>

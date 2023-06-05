@@ -13,6 +13,11 @@
 <body>
 <main>
     <div class="container-fluid">
+        @if ($errors->has('status'))
+            <div class="alert alert-danger">
+                {{ $errors->first('status') }}
+            </div>
+        @endif
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
 
@@ -20,7 +25,6 @@
                     <h3 class="login-title">Log in</h3>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
-
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
