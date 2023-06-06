@@ -8,8 +8,10 @@
         <th scope="col">#</th>
         <th scope="col">Date</th>
         <th scope="col">Time</th>
+        <th scope="col">Department</th>
         <th scope="col">Status</th>
         <th scope="col">Patient</th>
+
         <th>Action</th>
 
 
@@ -21,6 +23,8 @@
             <td>{{$loop->index+1}}</td>
             <td>{{$record->appointment_date}}</td>
             <td>{{$record->appointment_time}}</td>
+            <td>{{$record->doctor->department}}</td>
+
             <td>
                 <form id="toggle-form-{{$record->id}}" action="{{ route('status.approval', $record->id) }}" method="post">
                     @csrf
@@ -30,6 +34,8 @@
                     </button>
                 </form>
             </td>
+            <th scope="col">{{$record->patient->user->name}}</th>
+
 
             <td>
 

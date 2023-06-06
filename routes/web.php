@@ -34,13 +34,14 @@ Route::prefix('role')->name('role.')->group(function(){
     //route to update data
     Route:: put('/{id}',[\App\Http\Controllers\RoleController::class,'update'])->name('update');
 });
+Route::get('/approvedDoctors',[\App\Http\Controllers\SuperAdminContoller::class,'approveDoctors'])->name('doctors.approve');
+Route::get('/doctors/{id}',[\App\Http\Controllers\DoctorController::class,'show'])->name('doctor.show');
+Route::patch('/toggle-approval/{id}', [\App\Http\Controllers\SuperAdminContoller::class, 'toggleApproval'])->name('toggle.approval');
 Route::post('doctor/request',[\App\Http\Controllers\DoctorController::class,'request'])->name('doctor.request');
 Route::get('/registerDoctor',[\App\Http\Controllers\DoctorController::class,'doctorRegister'])->name('registerDoctor');
-Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('home');
-Route::get('/approvedDoctors',[\App\Http\Controllers\SuperAdminContoller::class,'approveDoctors'])->name('doctors.approve');
-Route::patch('/toggle-approval/{id}', [\App\Http\Controllers\SuperAdminContoller::class, 'toggleApproval'])->name('toggle.approval');
-Route:: get('/{id}',[\App\Http\Controllers\DoctorController::class,'show'])->name('doctor.show');
-Route::get('/doctor/dashboard',[\App\Http\Controllers\DoctorController::class,'home'])->name('home');
+
+Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('patients.home');
+Route::get('/doctor/dashboard',[\App\Http\Controllers\DoctorController::class,'home'])->name('doctors.home');
 
 
 

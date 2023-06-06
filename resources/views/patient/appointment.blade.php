@@ -14,7 +14,7 @@
                 <h2>Make an Appointment</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
-
+            @if($appointment_count==0)
             <form action="{{route('appointmentRequest')}}" method="post" role="form">
                 @csrf
                 <div class="row">
@@ -29,21 +29,8 @@
                     <div class="col-md-4 form-group mt-3">
                         <select name="doctor" id="doctor" class="form-select">
                             <option value="">Select Doctor</option>
-                            @php
-                                $doctors = [];
-                            @endphp
                             @foreach ($data['records'] as $record)
-                                @php
-                                    $doctorId = $record->doctor->id;
-                                    $doctorName = $record->doctor->user->name;
-                                    $department = $record->doctor->department;
-                                @endphp
-                                @if (!array_key_exists($doctorId, $doctors))
-                                    @php
-                                        $doctors[$doctorId] = ['name' => $doctorName, 'department' => $department];
-                                    @endphp
-                                    <option value="{{ $doctorId }}">{{ $doctorName }} - {{ $department }}</option>
-                                @endif
+                                    <option value="{{ $record->id }}">{{ $record->user->name }} - {{ $record->department }}</option>
                             @endforeach
                         </select>
                     </div>
@@ -59,7 +46,41 @@
                 </div>
                 <div class="text-center"><button  class="btn btn-primary" type="submit">Make an Appointment</button></div>
             </form>
-            <div><a href="{{route('appointment.show',$record->id)}}"class="btn btn-info">View Progress</a></div>
+            @else
+                <h1 class="text-center">Appointment Progress</h1>
+                <table class="table table-bordered">
+                    <thead>
+
+                    <tr>
+                        <th>Appointment Date</th>
+                        <td>{{$appointment->appointment_date}}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Time</th>
+                        <td>{{$appointment->appointment_time}}</td>
+                    </tr>
+                    <tr>
+                        <th>Doctor</th>
+                        <td>Dr. {{$appointment->doctor->user->name}}</td>
+                    </tr>
+                    <tr>
+                        <th>Department</th>
+                        <td>{{$appointment->doctor->department}}</td>
+                    </tr>
+                    <tr>
+                        <th>Appointment Status</th>
+                        @if($appointment->status==1)
+                            <td>Approved</td>
+                        @else
+                            <td>Not Approved  </td>
+                        @endif
+                    </tr>
+
+
+                    </thead>
+                </table>
+
+            @endif
 
 
 

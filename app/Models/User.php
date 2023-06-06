@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use App\Models\Backend\Doctor;
+use App\Models\Backend\Patient;
 use App\Models\Backend\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -51,6 +52,10 @@ class User extends Authenticatable
     public function doctor()
     {
         return $this->belongsTo(Doctor::class);
+    }
+    public function patient()
+    {
+        return $this->hasOne(Patient::class);
     }
 
 }

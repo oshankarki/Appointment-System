@@ -82,7 +82,7 @@
 
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-                <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('patient')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
                 <li><a class="nav-link scrollto" href="{{route("makeAppointment")}}">Appointment</a></li>
 

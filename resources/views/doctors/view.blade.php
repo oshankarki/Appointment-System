@@ -33,7 +33,7 @@
             </td>
             <td>{{$record->license_no}}</td>
             <td>{{$record->department}}</td>
-            <td><a href="{{route('doctor.show',$record->id)}}"class="btn btn-info">View Details</a></td>
+            <td><a href="{{route('doctor.show',$record->id)}}" class="btn btn-info">View Details</a></td>
 
 
         </tr>

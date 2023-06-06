@@ -54,7 +54,7 @@
                         <td>Not Found</td>
                     @endif
                 </tr>
-                </tr>
+
                 </thead>
             </table>
         </div>

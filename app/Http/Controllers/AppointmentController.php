@@ -31,6 +31,7 @@ class AppointmentController extends Controller
     {
 
         $records = Appointment::get();
+
         return view("doctors.appointments.index",compact('records'));
     }
     public function statusApproval($id)
@@ -49,20 +50,20 @@ class AppointmentController extends Controller
     }
     public function update(Request $request,$id)
     {
-        $data['record']=Appointment::find($id);
-        if(!$data['record' ]){
-            request()->session()->flash('error',"Error:Invalid Request");
+        $data['record'] = Appointment::find($id);
+        if (!$data['record']) {
+            request()->session()->flash('error', "Error: Invalid Request");
             return redirect()->route('doctors.appointments.index');
         }
-        $record=$data['record']->update($request->all());
-        if($record)
-        {
-            return redirect()->route('doctors.appointments.index')->with('success', 'Appointment Updated successfully');
-        }else{
-            return redirect()->back()->withErrors('Appointment Updation Failed');
 
+        $data['record']->prescription = $request->input('prescription');
+        $updated = $data['record']->save();
+
+        if ($updated) {
+            return redirect()->route('doctors.appointments.index')->with('success', 'Appointment updated successfully');
+        } else {
+            return redirect()->back()->withErrors('Appointment updation failed');
         }
-        return redirect()->route('doctors.appointments.index');
     }
     public function destroy($id)
     {
@@ -72,10 +73,12 @@ class AppointmentController extends Controller
     }
     public function makeAppointment()
     {
-        $data['records'] = Appointment::all();
+        $data['records'] = Doctor::get();
+        $patient_id = auth()->user()->patient->id;
 
-        return view("patient.appointment", compact('data'));
+        $appointment_count = Appointment::where('patient_id', $patient_id)->count();
+        $appointment = Appointment::where('patient_id', $patient_id)->first();
+
+        return view("patient.appointment", compact('data','appointment_count','appointment'));
     }
-
-
 }

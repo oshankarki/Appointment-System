@@ -111,26 +111,13 @@
                             <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
                                 <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">Appointment </span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
                             <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="{{route('doctors.appointments.schedule')}}" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Schedule</span></a>
-                                </li>
+
                                 <li>
                                     <a href="{{route('doctors.appointments.index')}}" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">View</span></a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a href="#submenu1" data-bs-toggle="collapse" class="nav-link px-0 align-middle">
-                                <i class="fa fa-user"></i> <span class="ms-1 d-none d-sm-inline">See Patients </span> <span class="arrow"><i class="fa fa-caret-down"></i></span> </a>
-                            <ul class="collapse show nav flex-column ms-1" id="submenu1" data-bs-parent="#menu">
-                                <li class="w-100">
-                                    <a href="" class="nav-link px-0"> <i class="fa fa-edit"></i> <span class="d-none d-sm-inline">Approved Patients</span></a>
-                                </li>
-                                <li>
-                                    <a href="" class="nav-link px-0"> <i class="fa fa-list"></i> <span class="d-none d-sm-inline">List of Patients</span></a>
-                                </li>
-                            </ul>
-                        </li>
+
                     </ul>
                     <hr>
 
