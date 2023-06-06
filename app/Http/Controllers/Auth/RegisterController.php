@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Backend\Patient;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -66,13 +68,24 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
 
-        return User::create([
+        $user=  User::create([
             'role_id'=>3,
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
         ]);
+        if($user)
+        {
+            $patient = new Patient();
+            $patient->user_id = $user->id;
+            $patient->save();
+
+        }
+        return $user;
+
     }
+
+
     public function redirectPath()
     {
         if (Auth::user()->role->name == 'patient') {

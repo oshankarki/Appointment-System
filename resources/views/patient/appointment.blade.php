@@ -1,5 +1,6 @@
 @extends('layouts.patient')
 @section('content')
+
     <section id="hero" class="d-flex align-items-center">
         <div class="container">
             <h2>Make a appointment with experienced doctors</h2>
@@ -14,48 +15,53 @@
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
 
-            <form action="forms/appointment.php" method="post" role="form" class="php-email-form">
-
+            <form action="{{route('appointmentRequest')}}" method="post" role="form">
+                @csrf
                 <div class="row">
                     <div class="col-md-4 form-group mt-3">
-                        <input type="date" name="date" class="form-control datepicker" id="date" placeholder="Appointment Date" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                        <input type="date" name="appointment_date" class="form-control datepicker" id="date"  placeholder="Appointment Date">
                         <div class="validate"></div>
                     </div>
                     <div class="col-md-4 form-group mt-3">
-                        <input type="time" name="time" class="form-control datepicker" id="date" placeholder="Appointment Time" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
-                    </div>
-                    <div class="col-md-4 form-group mt-3">
-                        <select name="department" id="department" class="form-select">
-                            <option value="">Select Doctor</option>
-                            @foreach ($data['records'] as $record)
-                                <option value="{{ $record->doctor->id }}">{{ $record->doctor->user->name }}-{{ $record->doctor->department}}</option>
-                            @endforeach
-                        </select>
+                        <input type="time" name="appointment_time" class="form-control datepicker" id="date" placeholder="Appointment Time">
                         <div class="validate"></div>
                     </div>
                     <div class="col-md-4 form-group mt-3">
                         <select name="doctor" id="doctor" class="form-select">
                             <option value="">Select Doctor</option>
-                            <option value="Doctor 1">Doctor 1</option>
-                            <option value="Doctor 2">Doctor 2</option>
-                            <option value="Doctor 3">Doctor 3</option>
+                            @php
+                                $doctors = [];
+                            @endphp
+                            @foreach ($data['records'] as $record)
+                                @php
+                                    $doctorId = $record->doctor->id;
+                                    $doctorName = $record->doctor->user->name;
+                                    $department = $record->doctor->department;
+                                @endphp
+                                @if (!array_key_exists($doctorId, $doctors))
+                                    @php
+                                        $doctors[$doctorId] = ['name' => $doctorName, 'department' => $department];
+                                    @endphp
+                                    <option value="{{ $doctorId }}">{{ $doctorName }} - {{ $department }}</option>
+                                @endif
+                            @endforeach
                         </select>
-                        <div class="validate"></div>
                     </div>
+
                 </div>
 
                 <div class="form-group mt-3">
-                    <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
+                    <textarea class="form-control" name="description" rows="5" placeholder="Message (Optional)"></textarea>
                     <div class="validate"></div>
                 </div>
                 <div class="mb-3">
-                    <div class="loading">Loading</div>
-                    <div class="error-message"></div>
-                    <div class="sent-message">Your appointment request has been sent successfully. Thank you!</div>
+
                 </div>
-                <div class="text-center"><button type="submit">Make an Appointment</button></div>
+                <div class="text-center"><button  class="btn btn-primary" type="submit">Make an Appointment</button></div>
             </form>
+            <div><a href="{{route('appointment.show',$record->id)}}"class="btn btn-info">View Progress</a></div>
+
+
 
         </div>
     </section><!-- End Appointment Section -->

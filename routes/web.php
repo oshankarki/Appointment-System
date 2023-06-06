@@ -57,6 +57,10 @@ Route::patch('/patient-status-approval/{id}', [\App\Http\Controllers\Appointment
 Route::patch('/patient/{id}/request', [\App\Http\Controllers\AppointmentController::class, 'makeRequest'])->name('patient.status.request');
 // web.php (or routes/web.php) - Example route definition
 Route::patch('/patient/{id}/approval', [\App\Http\Controllers\AppointmentController::class,'approval'])->name('patient.status.approval');
+Route::post('',[\App\Http\Controllers\PatientContoller::class,'store'])->name('appointmentRequest');
+Route::get('',[\App\Http\Controllers\PatientContoller::class,'index'])->name('patient.index');
+Route:: get('/{id}',[\App\Http\Controllers\PatientContoller::class,'show'])->name('appointment.show');
+
 
 
 
