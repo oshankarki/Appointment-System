@@ -5,13 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Medilab Bootstrap Template - Index</title>
+    <title>Patient</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
 
     <!-- Favicons -->
-    <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
     <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
@@ -75,50 +74,23 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-
         <h1 class="logo me-auto"><a href="index.html">MediHub</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{route('patient')}}">Home</a></li>
+                <li><a class="nav-link scrollto active" href="{{route('patients.home')}}">Home</a></li>
                 <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
-                <li><a class="nav-link scrollto" href="{{route("makeAppointment")}}">Appointment</a></li>
-
-                <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>
-                    <ul>
-                        <li><a href="#">Drop Down 1</a></li>
-                        <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                            <ul>
-                                <li><a href="#">Deep Drop Down 1</a></li>
-                                <li><a href="#">Deep Drop Down 2</a></li>
-                                <li><a href="#">Deep Drop Down 3</a></li>
-                                <li><a href="#">Deep Drop Down 4</a></li>
-                                <li><a href="#">Deep Drop Down 5</a></li>
-                            </ul>
-                        </li>
-                        <li><a href="#">Drop Down 2</a></li>
-                        <li><a href="#">Drop Down 3</a></li>
-                        <li><a href="#">Drop Down 4</a></li>
-                    </ul>
-                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
 
-        <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+        <a href="{{route("makeAppointment")}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
 
     </div>
 </header><!-- End Header -->
-
-
-
 <main id="main">
 @yield('content')
 
 </main><!-- End #main -->
-
 <!-- ======= Footer ======= -->
 <footer id="footer">
 
@@ -140,19 +112,17 @@
                 <div class="col-lg-2 col-md-6 footer-links">
                     <h4>Useful Links</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="{{route("patients.home")}}">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
                     </ul>
                 </div>
 
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Our Services</h4>
                     <ul>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Free Instant Consultation</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Specialist Video Consultation</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Book Hospital Appointment</a></li>
                     </ul>
                 </div>
 
@@ -172,7 +142,7 @@
 
         <div class="me-md-auto text-center text-md-start">
             <div class="copyright">
-                &copy; Copyright <strong><span>MediBook</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>MediHub</span></strong>. All Rights Reserved
             </div>
 
         </div>

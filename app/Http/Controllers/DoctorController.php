@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DoctorRequest;
 use App\Mail\ApprovalNotification;
 use App\Models\Backend\Doctor;
 use App\Models\User;
@@ -19,8 +20,9 @@ class DoctorController extends Controller
         return view('auth.registerDoctor');
     }
 
-        public function request(Request $request)
+    public function request(DoctorRequest $request)
     {
+
         $randomPassword = Str::random(8);
         $user = new User();
         $user->name = $request->input('name');
@@ -29,8 +31,6 @@ class DoctorController extends Controller
         $user->role_id = 2;
         $user->save();
 
-
-        // Save doctor data
         if($user)
         {
             $doctor = new Doctor();

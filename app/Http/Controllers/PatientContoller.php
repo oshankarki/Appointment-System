@@ -11,9 +11,10 @@ class PatientContoller extends Controller
 {
     public function home()
     {
-        $data['records']=Appointment::all();
-        return view("patient.home", compact('data'));
+        $records = Doctor::all();
+        return view("patient.home", compact('records'));
     }
+
 
 
     public function store(Request $request)

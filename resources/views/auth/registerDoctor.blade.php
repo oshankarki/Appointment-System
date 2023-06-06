@@ -31,17 +31,12 @@
                             <label for="license_no">License Number</label>
                             <input type="license_no" name="license_no" id="license_no" class="form-control" placeholder="license Number">
                         </div>
-                        Image:
-                        <div id="imagePreviewContainer" style="display: none;">
-                            <img id="imagePreview" src="#" alt="Image Preview" style="max-width: 200px; max-height: 200px;">
-                        </div>
-
                         <div class="form-group">
                             <label for="department">Department</label>
                             <input type="department" name="department" id="department" class="form-control" placeholder="Department">
                         </div>
                         <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="col-md-9 offset-md-1">
                                 <button type="submit" class="btn btn-block login-btn">
                                     Request for approval
                                 </button>
@@ -52,7 +47,7 @@
                 </div>
             </div>
             <div class="col-sm-6 px-0 d-none d-sm-block">
-                <img src="assets/login/images/about.jpg" alt="login image" class="login-img">
+                <img src="{{asset('assets/login/images/about.jpg')}}" alt="login image" class="login-img">
             </div>
         </div>
     </div>

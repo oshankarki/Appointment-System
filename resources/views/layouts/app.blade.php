@@ -42,7 +42,7 @@
     <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                SuperAdmin
+                Doctor
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
@@ -71,10 +71,10 @@
                         @endif
                     @else
                         <li class="nav-item dropdown">
-                            @if(Auth::user()->role_id==0)
                             <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }}
                             </a>
+
                             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="">
                                     View Profile
@@ -90,13 +90,14 @@
                                     @csrf
                                 </form>
                             </div>
-                            @endif
+
                         </li>
                     @endguest
                 </ul>
             </div>
         </div>
     </nav>
+
     <div class="container-fluid">
         <div class="row flex-nowrap">
             <div class="col-auto col-md-3 col-xl-2 px-sm-2 px-0 bg-white">

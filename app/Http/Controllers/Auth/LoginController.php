@@ -1,41 +1,20 @@
 <?php
 
 namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\MessageBag;
 use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Login Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles authenticating users for the application and
-    | redirecting them to your home screen. The controller uses a trait
-    | to conveniently provide its functionality to your applications.
-    |
-    */
-
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
     protected $redirectTo = RouteServiceProvider::HOME;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -43,16 +22,15 @@ class LoginController extends Controller
 
     public function redirectPath()
     {
-        if (Auth::user()->role->name == 'patient') {
+        if (Auth::user()->role->name === 'patient') {
             return '/patient/home';
-        } else if (Auth::user()->role->name == 'doctor') {
-            if(Auth::user()->app_status == 1){
+        } elseif (Auth::user()->role->name === 'doctor') {
+            if (Auth::user()->app_status == 1) {
                 return '/doctor/dashboard';
-            }else{
-                return redirect('/login')->back()->withErrors("You are not Verified Yet");
-//                return '/login';
+            } else {
+                Auth::logout();
             }
-        } else if (Auth::user()->role->name == 'SuperAdmin') {
+        } elseif (Auth::user()->role->name === 'SuperAdmin') {
             return '/home';
         }
     }
