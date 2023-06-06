@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Backend\Doctor;
 use App\Models\Backend\Role;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -46,6 +47,10 @@ class User extends Authenticatable
     ];
     function role(){
         return $this->belongsTo(Role::class,'role_id','id');
+    }
+    public function doctor()
+    {
+        return $this->belongsTo(Doctor::class);
     }
 
 }

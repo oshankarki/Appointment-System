@@ -1,17 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        function toggleAppStatus(doctorId) {
-            $('#toggle-form-' + doctorId).submit();
-        }
-    </script>
-</head>
-<body>
+@extends('layouts.app')
+@section('content')
+
 
 <h2 style="text-align:center">Role Index</h2>
 <table class="table">
@@ -51,6 +40,9 @@
     @endforeach
     </tbody>
 </table>
-
-</body>
-</html>
+<script>
+    function toggleAppStatus(doctorId) {
+        $('#toggle-form-' + doctorId).submit();
+    }
+</script>
+@endsection

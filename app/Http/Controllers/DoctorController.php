@@ -21,14 +21,14 @@ class DoctorController extends Controller
 
         public function request(Request $request)
     {
-
         $randomPassword = Str::random(8);
         $user = new User();
         $user->name = $request->input('name');
         $user->email = $request->input('email');
         $user->password =Hash::make($randomPassword);
-        $user->role_id = "2";
+        $user->role_id = 2;
         $user->save();
+
 
         // Save doctor data
         if($user)

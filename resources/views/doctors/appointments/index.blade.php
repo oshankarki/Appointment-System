@@ -1,13 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Create</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-</head>
-<body>
+@extends('layouts.doctors')
+@section('content')
 
-<h2 style="text-align:center">Role Index</h2>
+<h2 style="text-align:center">Appointment Index</h2>
 <table class="table">
     <thead>
     <tr>
@@ -15,7 +9,7 @@
         <th scope="col">Date</th>
         <th scope="col">Time</th>
         <th scope="col">Status</th>
-        <th scope="col">Patient Name</th>
+        <th scope="col">Patient</th>
         <th>Action</th>
 
 
@@ -36,19 +30,19 @@
                     </button>
                 </form>
             </td>
-            <td></td>
+
             <td>
 
-                <a href="{{route('role.edit',$record->id)}}"class="btn btn-primary">Edit</i></a>
+                <a href="{{route('appointment.edit',$record->id)}}"class="btn btn-primary">Edit</a>
 
-                <form action="{{ route('role.destroy', $record->id) }}" method="post" style="display:inline-block">
+                <form action="{{ route('appointments.destroy', $record->id) }}" method="post" style="display:inline-block">
                     @method("delete")
                     @csrf
                     <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">
                         Delete</i>
                     </button>
                 </form>
-            </td>
+
 
         </tr>
     @endforeach
@@ -59,5 +53,4 @@
         $('#toggle-form-' + appointmentId).submit();
     }
 </script>
-</body>
-</html>
+@endsection
