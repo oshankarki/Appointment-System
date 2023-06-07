@@ -11,10 +11,7 @@
         <th scope="col">Department</th>
         <th scope="col">Status</th>
         <th scope="col">Patient</th>
-
         <th>Action</th>
-
-
     </tr>
     </thead>
     <tbody>
@@ -24,7 +21,6 @@
             <td>{{$record->appointment_date}}</td>
             <td>{{$record->appointment_time}}</td>
             <td>{{$record->doctor->department}}</td>
-
             <td>
                 <form id="toggle-form-{{$record->id}}" action="{{ route('status.approval', $record->id) }}" method="post">
                     @csrf
@@ -35,10 +31,7 @@
                 </form>
             </td>
             <th scope="col">{{$record->patient->user->name}}</th>
-
-
             <td>
-
                 <a href="{{route('appointment.edit',$record->id)}}"class="btn btn-primary">Edit</a>
 
                 <form action="{{ route('appointments.destroy', $record->id) }}" method="post" style="display:inline-block">
@@ -48,8 +41,6 @@
                         Delete</i>
                     </button>
                 </form>
-
-
         </tr>
     @endforeach
     </tbody>

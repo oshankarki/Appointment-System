@@ -29,12 +29,6 @@ class SuperAdminContoller extends Controller
         $doctor = Doctor::find($id);
         $doctor->user->app_status = !$doctor->user->app_status;
         $doctor->user->save();
-
-        if ($doctor->user->app_status) {
-            // Log in the doctor
-            Auth::login($doctor->user);
-        }
-
         return redirect()->back();
     }
 

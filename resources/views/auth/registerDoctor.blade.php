@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('assets/login/css/login.css')}}">
+
 </head>
 <body>
 <main>
@@ -23,18 +24,30 @@
                             <label for="name">Name</label>
                             <input type="text" name="name" id="name" class="form-control" placeholder="Full Name">
                         </div>
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
                         <div class="form-group">
                             <label for="email">Email</label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="example@gmail.com">
                         </div>
+                        @if ($errors->has('email'))
+                            <span class="text-danger">{{ $errors->first('email') }}</span>
+                        @endif
                         <div class="form-group">
                             <label for="license_no">License Number</label>
                             <input type="license_no" name="license_no" id="license_no" class="form-control" placeholder="license Number">
                         </div>
+                        @if ($errors->has('license_no'))
+                            <span class="text-danger">{{ $errors->first('license_no') }}</span>
+                        @endif
                         <div class="form-group">
                             <label for="department">Department</label>
                             <input type="department" name="department" id="department" class="form-control" placeholder="Department">
                         </div>
+                        @if ($errors->has('department'))
+                            <span class="text-danger">{{ $errors->first('department') }}</span>
+                        @endif
                         <div class="row mb-0">
                             <div class="col-md-9 offset-md-1">
                                 <button type="submit" class="btn btn-block login-btn">

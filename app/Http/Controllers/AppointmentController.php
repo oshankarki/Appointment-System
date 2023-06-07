@@ -81,4 +81,59 @@ class AppointmentController extends Controller
 
         return view("patient.appointment", compact('data','appointment_count','appointment'));
     }
+    public  function profile()
+    {
+        return view(('doctors.profile'));
+    }
+    public  function editDoctor()
+    {
+        return view(('doctors.edit'));
+    }
+    public function updateDoctor(Request $request)
+    {
+        $user = Auth::user();
+        $doctor = Doctor::where('user_id',Auth::user()->id);
+        $user->name = $request->input('name');
+        $user->email = $request->input('email');
+        $user->save();
+        if ($request->hasFile('image')) {
+            // Delete previous image
+            $previousImagePath = public_path('images/' . $user->doctor->image);
+            if (file_exists($previousImagePath)) {
+                unlink($previousImagePath);
+            }
+
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('public/images', $imageName);
+            $doctor->update([
+                'image'=> $imageName,
+                'license_no'=>$request->license_no,
+                'department'=>$request->department,
+            ]);
+        }
+
+        return redirect()->route('doctor.profile')->with('success', 'Profile updated successfully');
+    }
+    public function changePassword()
+    {
+        return view('doctors.password');
+    }
+    public function updatePassword(Request $request)
+    {
+        $request->validate([
+            'current_password' => 'required',
+            'new_password' => 'required|min:8',
+            'confirm_new_password' => 'required|same:new_password',
+        ]);
+
+        $user = Auth::user();
+
+        if (!password_verify($request->input('current_password'), $user->password)) {
+            return redirect()->back()->withErrors( 'Invalid old password');
+        }
+        $user->password = bcrypt($request->input('new_password'));
+        $user->save();
+        return view('doctors.profile')->with('success', 'Password updated successfully');
+    }
 }

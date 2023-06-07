@@ -39,16 +39,23 @@ Route::middleware('superAdmin')->group(function(){
     Route::get('/approvedDoctors',[\App\Http\Controllers\SuperAdminContoller::class,'approveDoctors'])->name('doctors.approve');
     Route::get('/doctors/{id}',[\App\Http\Controllers\DoctorController::class,'show'])->name('doctor.show');
     Route::patch('/toggle-approval/{id}', [\App\Http\Controllers\SuperAdminContoller::class, 'toggleApproval'])->name('toggle.approval');
+    Route::get('/superadmin/profile',[\App\Http\Controllers\DoctorController::class,'profile'])->name('superadmin.profile');
+    Route::get('/superadmin/profile/edit', [App\Http\Controllers\DoctorController::class, 'edit'])->name('superadmin.profile.edit');
+    Route::put('', [App\Http\Controllers\DoctorController::class, 'update'])->name('superadmin.profile.update');
+    Route::get('/superadmin/changePassword', [App\Http\Controllers\DoctorController::class, 'changePassword'])->name('superadmin.password.change');
+    Route::put('/superadmin/updatePassword', [App\Http\Controllers\DoctorController::class, 'updatePassword'])->name('superadmin.password.update');
+
 });
 
 Route::get('/registerDoctor',[\App\Http\Controllers\DoctorController::class,'doctorRegister'])->name('registerDoctor');
 Route::post('doctor/request',[\App\Http\Controllers\DoctorController::class,'request'])->name('doctor.request');
-Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('patients.home');
 
 Route::middleware('patient')->group(function(){
     Route::get('/home/appointment', [\App\Http\Controllers\AppointmentController::class, 'makeAppointment'])->name('makeAppointment');
     Route::post('/request',[\App\Http\Controllers\PatientContoller::class,'store'])->name('appointmentRequest');
     Route:: get('/{id}',[\App\Http\Controllers\PatientContoller::class,'show'])->name('appointment.show');
+    Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('patients.home');
+
 });
 
 
@@ -64,7 +71,12 @@ Route::middleware('doctor')->group(function(){
     Route::get('/doctor/appointments',[\App\Http\Controllers\AppointmentController::class,'index'])->name('doctors.appointments.index');
     Route::patch('/status-approval/{id}', [\App\Http\Controllers\AppointmentController::class, 'statusApproval'])->name('status.approval');
     Route:: delete('/{id}',[\App\Http\Controllers\AppointmentController::class,'destroy'])->name('appointments.destroy');
-    Route:: put('/{id}',[\App\Http\Controllers\AppointmentController::class,'update'])->name('doctors.appointments.update');
+    Route:: put('/{id}',[\App\Http\Controllers\AppointmentController::class,'updateDoctor'])->name('doctors.appointments.update');
+    Route::get('/doctor/profile',[\App\Http\Controllers\AppointmentController::class,'profile'])->name('doctor.profile');
+    Route::get('/doctor/profile/edit', [App\Http\Controllers\AppointmentController::class, 'editDoctor'])->name('doctor.profile.edit');
+    Route::put('', [App\Http\Controllers\AppointmentController::class, 'updateDoctor'])->name('doctor.profile.update');
+    Route::get('/doctor/changePassword', [App\Http\Controllers\AppointmentController::class, 'changePassword'])->name('doctor.password.change');
+    Route::put('/doctor/updatePassword', [App\Http\Controllers\AppointmentController::class, 'updatePassword'])->name('doctor.password.update');
 });
 
 
