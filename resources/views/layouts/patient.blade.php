@@ -50,7 +50,7 @@
 
         <div class="d-none d-lg-flex social-links align-items-center">
             @if(Auth::user())
-                <a href="" class="twitter">{{Auth::user()->name}}</a>
+                <a href="{{route("patient.profile")}}" class="twitter">{{Auth::user()->name}}</a>
                 <a class="twitter" href="{{ route('logout') }}"
                    onclick="event.preventDefault();
             document.getElementById('logout-form').submit();">
@@ -74,17 +74,17 @@
 <!-- ======= Header ======= -->
 <header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
-        <h1 class="logo me-auto"><a href="index.html">MediHub</a></h1>
+        <h1 class="logo me-auto"><a href="/">MediBook</a></h1>
         <nav id="navbar" class="navbar order-last order-lg-0">
             <ul>
-                <li><a class="nav-link scrollto active" href="{{route('patients.home')}}">Home</a></li>
+                <li><a class="nav-link scrollto active" href="/">Home</a></li>
                 <li><a class="nav-link scrollto" href="#doctors">Doctors</a></li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
-
+        @if(Auth::user())
         <a href="{{route("makeAppointment")}}" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
-
+        @endif
     </div>
 </header><!-- End Header -->
 <main id="main">

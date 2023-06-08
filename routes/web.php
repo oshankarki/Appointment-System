@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    $records = Doctor::all();
+    $records = Doctor::whereHas('user', function ($query) {
+        $query->where('app_status', true);
+    })->get();
     return view("patient.home", compact('records'));
 });
 
@@ -55,6 +57,13 @@ Route::middleware('patient')->group(function(){
     Route::post('/request',[\App\Http\Controllers\PatientContoller::class,'store'])->name('appointmentRequest');
     Route:: get('/{id}',[\App\Http\Controllers\PatientContoller::class,'show'])->name('appointment.show');
     Route::get('/patient/home',[\App\Http\Controllers\PatientContoller::class,'home'])->name('patients.home');
+    Route::get('/patient/profile',[\App\Http\Controllers\PatientContoller::class,'profile'])->name('patient.profile');
+    Route::get('/patient/profile/edit', [App\Http\Controllers\PatientContoller::class, 'editPatient'])->name('patient.profile.edit');
+    Route::put('/profileUpdate', [App\Http\Controllers\PatientContoller::class, 'updatePatient'])->name('patient.profile.update');
+    Route::get('/patient/changePassword', [App\Http\Controllers\PatientContoller::class, 'changePassword'])->name('patient.password.change');
+    Route::put('/patient/updatePassword', [App\Http\Controllers\PatientContoller::class, 'updatePassword'])->name('patient.password.update');
+    Route::delete('/patient/appointment/{id}', [App\Http\Controllers\PatientContoller::class, 'destroy'])->name('patient.appointment.destroy');
+
 
 });
 

@@ -33,5 +33,8 @@ class LoginController extends Controller
         } elseif (Auth::user()->role->name === 'SuperAdmin') {
             return '/home';
         }
+        else{
+            Auth::logout();
+        }
     }
 }

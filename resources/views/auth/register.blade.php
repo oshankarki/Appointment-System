@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
                 <div class="login-wrapper my-auto">
-                    <h3 class="login-title">Log in</h3>
+                    <h3 class="login-title">Register as a Patient</h3>
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
                         <div class="form-group">

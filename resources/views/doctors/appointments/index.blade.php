@@ -25,7 +25,7 @@
                 <form id="toggle-form-{{$record->id}}" action="{{ route('status.approval', $record->id) }}" method="post">
                     @csrf
                     @method('PATCH')
-                    <button type="button" onclick="toggleAppStatus({{$record->id}})">
+                    <button type="button" class="btn btn-info" onclick="toggleAppStatus({{$record->id}})">
                         {{$record->status? 'Approved' : 'Not Approved'}}
                     </button>
                 </form>

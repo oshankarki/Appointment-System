@@ -20,12 +20,12 @@
                 <div class="row">
                     <div class="col-md-4 form-group mt-3">
                         <input type="date" name="appointment_date" class="form-control datepicker" id="date"  placeholder="Appointment Date">
-                        <div class="validate"></div>
                     </div>
+
                     <div class="col-md-4 form-group mt-3">
                         <input type="time" name="appointment_time" class="form-control datepicker" id="date" placeholder="Appointment Time">
-                        <div class="validate"></div>
                     </div>
+
                     <div class="col-md-4 form-group mt-3">
                         <select name="doctor" id="doctor" class="form-select">
                             <option value="">Select Doctor</option>
@@ -34,9 +34,30 @@
                             @endforeach
                         </select>
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 form-group mt-3">
+                        @if ($errors->has('appointment_time'))
+                            <span class="text-danger">{{ $errors->first('appointment_time') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="col-md-4 form-group mt-3">
+                        @if ($errors->has('appointment_date'))
+                            <span class="text-danger">{{ $errors->first('appointment_date') }}</span>
+                        @endif
+                    </div>
+
+                    <div class="col-md-4 form-group mt-3">
+                        @if ($errors->has('doctor'))
+                            <span class="text-danger">{{ $errors->first('doctor') }}</span>
+                        @endif
+                    </div>
+
+
+
 
                 </div>
-
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="description" rows="5" placeholder="Message (Optional)"></textarea>
                     <div class="validate"></div>
@@ -75,13 +96,16 @@
                             <td>Not Approved  </td>
                         @endif
                     </tr>
-
-
                     </thead>
                 </table>
-
+                <form action="{{ route('patient.appointment.destroy', $appointment->id) }}" method="post" style="display:inline-block">
+                    @method("delete")
+                    @csrf
+                    <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">
+                        Delete</i>
+                    </button>
+                </form>
             @endif
-
 
 
         </div>

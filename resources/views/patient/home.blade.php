@@ -66,10 +66,14 @@
 
         <div class="row">
             @foreach($records as $record)
-
             <div class="col-lg-6">
                 <div class="member d-flex align-items-start">
-                    <div class="pic"><img src="{{asset('assets/img/doctors/doctors-1.jpg')}}" class="img-fluid" alt=""></div>
+                    @if($record->image)
+                        <div class="pic"><img src="{{ asset('storage/images/'.$record->image)}}" alt="Doctor Image" height="180px" width="180"></div>
+                    @else
+                        <div class="pic"><img src="{{asset('assets/img/doctors/doctors-1.jpg')}}" class="img-fluid" alt=""></div>
+                    @endif
+
                     <div class="member-info">
                         <h4>{{$record->user->name}}</h4>
                         <span>{{$record->department}}</span>

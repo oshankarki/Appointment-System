@@ -26,7 +26,7 @@
                 <form id="toggle-form-{{$record->id}}" action="{{ route('toggle.approval', $record->id) }}" method="post">
                     @csrf
                     @method('PATCH')
-                    <button type="button" onclick="toggleAppStatus({{$record->id}})">
+                    <button type="button" class="btn btn-info" onclick="toggleAppStatus({{$record->id}})">
                         {{$record->user->app_status ? 'Approved' : 'Not Approved'}}
                     </button>
                 </form>
@@ -34,8 +34,6 @@
             <td>{{$record->license_no}}</td>
             <td>{{$record->department}}</td>
             <td><a href="{{route('doctor.show',$record->id)}}" class="btn btn-info">View Details</a></td>
-
-
         </tr>
     @endforeach
     </tbody>

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\backend\Appointment;
+use App\Models\Backend\Doctor;
+use App\Models\Backend\Patient;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $approvedDoctors = Doctor::whereHas('user', function ($query) {
+            $query->where('app_status', true);
+        })->get()->count();
+        $notapprovedDoctors = Doctor::whereHas('user', function ($query) {
+            $query->where('app_status', false);
+        })->get()->count();
+        $patients = Patient::get()->count();
+        $appointments = Appointment::get()->count();
+        return view('home' ,compact('approvedDoctors','notapprovedDoctors','patients','appointments'));
     }
 }

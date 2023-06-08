@@ -73,7 +73,9 @@ class AppointmentController extends Controller
     }
     public function makeAppointment()
     {
-        $data['records'] = Doctor::get();
+        $data['records'] = Doctor::whereHas('user', function ($query) {
+            $query->where('app_status', true);
+        })->get();
         $patient_id = auth()->user()->patient->id;
 
         $appointment_count = Appointment::where('patient_id', $patient_id)->count();
