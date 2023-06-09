@@ -11,7 +11,7 @@
         <th scope="col">Department</th>
         <th scope="col">Status</th>
         <th scope="col">Patient</th>
-        <th>Action</th>
+{{--        <th>Action</th>--}}
     </tr>
     </thead>
     <tbody>
@@ -32,15 +32,15 @@
             </td>
             <th scope="col">{{$record->patient->user->name}}</th>
             <td>
-                <a href="{{route('appointment.edit',$record->id)}}"class="btn btn-primary">Edit</a>
+{{--                <a href="{{route('appointment.edit',$record->id)}}"class="btn btn-primary">Edit</a>--}}
 
-                <form action="{{ route('appointments.destroy', $record->id) }}" method="post" style="display:inline-block">
-                    @method("delete")
-                    @csrf
-                    <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">
-                        Delete</i>
-                    </button>
-                </form>
+{{--                <form action="{{ route('appointments.destroy', $record->id) }}" method="post" style="display:inline-block">--}}
+{{--                    @method("delete")--}}
+{{--                    @csrf--}}
+{{--                    <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">--}}
+{{--                        Delete</i>--}}
+{{--                    </button>--}}
+{{--                </form>--}}
         </tr>
     @endforeach
     </tbody>

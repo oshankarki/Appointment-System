@@ -8,6 +8,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
 {
@@ -29,6 +30,8 @@ class LoginController extends Controller
                 return '/doctor/dashboard';
             } else {
                 Auth::logout();
+                Session::flash('error', 'Your account is not approved yet. Please contact the administrator.');
+                return '/login';
             }
         } elseif (Auth::user()->role->name === 'SuperAdmin') {
             return '/home';

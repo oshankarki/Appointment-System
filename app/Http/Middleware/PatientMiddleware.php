@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
 
 class PatientMiddleware
@@ -15,11 +16,13 @@ class PatientMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role_id == 3) {
-            return $next($request);
+        if(auth()->user()) {
+            if (auth()->user()->role_id == 3) {
+                return $next($request);
+            }else{
+                Auth::logout();
+            }
         }
-
-        return redirect(route("patients.home"));
-
+        return redirect('/');
     }
 }

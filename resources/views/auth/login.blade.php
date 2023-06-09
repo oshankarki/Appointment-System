@@ -18,10 +18,22 @@
                 {{ $errors->first('status') }}
             </div>
         @endif
+
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
 
                 <div class="login-wrapper my-auto">
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger" id="error-message">
+                            {{ Session::get('error') }}
+                        </div>
+
+                        <script>
+                            setTimeout(function() {
+                                document.getElementById('error-message').style.display = 'none';
+                            }, 2000);
+                        </script>
+                    @endif
                     <h3 class="login-title">Log in</h3>
                     <form method="POST" action="{{ route('login') }}">
                         @csrf

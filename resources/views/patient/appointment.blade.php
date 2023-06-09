@@ -53,10 +53,6 @@
                             <span class="text-danger">{{ $errors->first('doctor') }}</span>
                         @endif
                     </div>
-
-
-
-
                 </div>
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="description" rows="5" placeholder="Message (Optional)"></textarea>

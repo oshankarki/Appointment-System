@@ -25,7 +25,6 @@ class AppointmentRequest extends FormRequest
             "appointment_date" => 'required',
             "appointment_time" => 'required',
             "doctor" => 'required',
-            "department" => 'required'
         ];
         return $rules;
     }

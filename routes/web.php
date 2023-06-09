@@ -43,7 +43,7 @@ Route::middleware('superAdmin')->group(function(){
     Route::patch('/toggle-approval/{id}', [\App\Http\Controllers\SuperAdminContoller::class, 'toggleApproval'])->name('toggle.approval');
     Route::get('/superadmin/profile',[\App\Http\Controllers\DoctorController::class,'profile'])->name('superadmin.profile');
     Route::get('/superadmin/profile/edit', [App\Http\Controllers\DoctorController::class, 'edit'])->name('superadmin.profile.edit');
-    Route::put('', [App\Http\Controllers\DoctorController::class, 'update'])->name('superadmin.profile.update');
+    Route::put('/superadmin/profileUpdate', [App\Http\Controllers\DoctorController::class, 'update'])->name('super_admin.profile.update');
     Route::get('/superadmin/changePassword', [App\Http\Controllers\DoctorController::class, 'changePassword'])->name('superadmin.password.change');
     Route::put('/superadmin/updatePassword', [App\Http\Controllers\DoctorController::class, 'updatePassword'])->name('superadmin.password.update');
 

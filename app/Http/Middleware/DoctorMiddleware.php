@@ -15,11 +15,14 @@ class DoctorMiddleware
      */
     public function handle(Request $request, Closure $next): Response
     {
-        if (auth()->user()->role_id == 2) {
-            return $next($request);
-        }
+        if(auth()->user()) {
 
-        return redirect(route("patients.home"));
+            if (auth()->user()->role_id == 2) {
+                return $next($request);
+            }
+        }
+        return redirect('/');
+
 
     }
 }

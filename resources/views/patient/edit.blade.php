@@ -34,7 +34,7 @@
                     </div>
 
                     <div class="form-group">
-                        <input type="file"  onchange="previewImage(this)" class="form-control"  name="image">
+                        <input type="file"  onchange="previewImage(this)" class="form-control"  name="image" accept="image/*">
                     </div>
                     <br>
                     <button type="submit" class="btn btn-primary">Update</button>

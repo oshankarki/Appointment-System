@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-    <form action="{{route('superadmin.password.update')}}"  method="post" enctype="multipart/form-data">
+    <form action="{{route('super_admin.profile.update')}}"  method="post" enctype="multipart/form-data">
         @method('PUT')
         @csrf
         <div class="form-group">

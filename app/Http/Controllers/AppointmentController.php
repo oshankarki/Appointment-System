@@ -30,17 +30,26 @@ class AppointmentController extends Controller
     public function index()
     {
 
-        $records = Appointment::get();
+        $doctorId = Auth::user()->doctor->id;
+        $records = Appointment::where('doctor_id', $doctorId)->get();
 
-        return view("doctors.appointments.index",compact('records'));
+        return view("doctors.appointments.index", compact('records'));
     }
     public function statusApproval($id)
     {
         $appointment = Appointment::find($id);
         $appointment->status = !$appointment->status;
         $appointment->save();
+        if($appointment->status==1)
+        {
+            return redirect()->back()->with('success', "Patient Approved Successfully");
 
-        return redirect()->back();
+        }
+        else{
+            return redirect()->back()->with('success', "Patient Unapproved");
+
+        }
+
     }
     public function edit($id)
     {
@@ -128,9 +137,7 @@ class AppointmentController extends Controller
             'new_password' => 'required|min:8',
             'confirm_new_password' => 'required|same:new_password',
         ]);
-
         $user = Auth::user();
-
         if (!password_verify($request->input('current_password'), $user->password)) {
             return redirect()->back()->withErrors( 'Invalid old password');
         }

@@ -16,7 +16,6 @@ class RoleController extends Controller
     }
     public function store(Request $request)
     {
-
         $role = Role::create($request->all());
         if($role)
         {

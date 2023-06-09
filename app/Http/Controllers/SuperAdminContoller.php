@@ -29,7 +29,13 @@ class SuperAdminContoller extends Controller
         $doctor = Doctor::find($id);
         $doctor->user->app_status = !$doctor->user->app_status;
         $doctor->user->save();
-        return redirect()->back();
-    }
+        if($doctor->user->app_status==1)
+        {
+            return redirect()->back()->with('success','Doctor approved Sucessfully');
+        }
+        else{
+            return redirect()->back()->with('success','Doctor Unapproved');
 
+        }
+    }
 }
