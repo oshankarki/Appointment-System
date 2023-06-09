@@ -36,11 +36,11 @@ return [
     'mailers' => [
         'smtp' => [
             'transport' => 'smtp',
-            'host' => 'smtp.gmail.com',
-            'port' => 587,
+            'host' => env('MAIL_HOST'),
+            'port' => env('MAIL_PORT'),
             'encryption' => 'tls',
-            'username' => 'karkioshan2056@gmail.com',
-            'password' => 'bsowmtmvkuchkwbi',
+            'username' => env('MAIL_USERNAME'),
+            'password' => env('MAIL_PASSWORD'),
             'timeout' => null,
             'local_domain' => env('MAIL_EHLO_DOMAIN'),
         ],
