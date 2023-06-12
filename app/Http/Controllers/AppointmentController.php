@@ -23,6 +23,7 @@ class AppointmentController extends Controller
         $appointments->doctor_id =$doctor->id ;
         $appointments->appointment_time= $request->input('appointment_time');
         $appointments->appointment_date= $request->input('appointment_date');
+
         $appointments->save();
         return redirect()->route('doctors.appointments.index');
 
@@ -86,10 +87,8 @@ class AppointmentController extends Controller
             $query->where('app_status', true);
         })->get();
         $patient_id = auth()->user()->patient->id;
-
         $appointment_count = Appointment::where('patient_id', $patient_id)->count();
-        $appointment = Appointment::where('patient_id', $patient_id)->first();
-
+        $appointment = Appointment::where('patient_id', $patient_id)->get();
         return view("patient.appointment", compact('data','appointment_count','appointment'));
     }
     public  function profile()

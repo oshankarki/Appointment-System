@@ -32,9 +32,10 @@ class PatientContoller extends Controller
             $appointment->appointment_date = $request->input('appointment_date');
             $appointment->appointment_time = $request->input('appointment_time');
             $appointment->doctor_id = $request->input('doctor');
+            $appointment->description= $request->input('description');
+
             $appointment->save();
         }
-
         return redirect()->back();
     }
     public function show($id)

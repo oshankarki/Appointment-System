@@ -14,7 +14,6 @@
                 <h2>Make an Appointment</h2>
                 <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
             </div>
-            @if($appointment_count==0)
             <form action="{{route('appointmentRequest')}}" method="post" role="form">
                 @csrf
                 <div class="row">
@@ -63,30 +62,37 @@
                 </div>
                 <div class="text-center"><button  class="btn btn-primary" type="submit">Make an Appointment</button></div>
             </form>
-            @else
-                <h1 class="text-center">Appointment Progress</h1>
+            <h1 class="text-center">Total no of appointments: {{$appointment_count}}</h1>
+
+        @if($appointment)
+                    @foreach($appointment as $app)
+
+                <h1 class="text-center">Appointment Progress for the Dr.{{$app->doctor->user->name}}</h1>
                 <table class="table table-bordered">
                     <thead>
-
                     <tr>
                         <th>Appointment Date</th>
-                        <td>{{$appointment->appointment_date}}</td>
+                        <td>{{$app->appointment_date}}</td>
                     </tr>
                     <tr>
                         <th>Appointment Time</th>
-                        <td>{{$appointment->appointment_time}}</td>
+                        <td>{{$app->appointment_time}}</td>
                     </tr>
                     <tr>
                         <th>Doctor</th>
-                        <td>Dr. {{$appointment->doctor->user->name}}</td>
+                        <td>Dr. {{$app->doctor->user->name}}</td>
                     </tr>
                     <tr>
                         <th>Department</th>
-                        <td>{{$appointment->doctor->department}}</td>
+                        <td>{{$app->doctor->department}}</td>
+                    </tr>
+                    <tr>
+                        <th>Description</th>
+                        <td>{{$app->description}}</td>
                     </tr>
                     <tr>
                         <th>Appointment Status</th>
-                        @if($appointment->status==1)
+                        @if($app->status==1)
                             <td>Approved</td>
                         @else
                             <td>Not Approved  </td>
@@ -94,14 +100,17 @@
                     </tr>
                     </thead>
                 </table>
-                <form action="{{ route('patient.appointment.destroy', $appointment->id) }}" method="post" style="display:inline-block">
-                    @method("delete")
-                    @csrf
-                    <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">
-                        Delete</i>
-                    </button>
-                </form>
+                    <form action="{{ route('patient.appointment.destroy', $app->id) }}" method="post" style="display:inline-block">
+                        @method("delete")
+                        @csrf
+                        <button type="submit" class="btn btn-block btn-danger sa-warning remove_row">
+                            Delete</i>
+                        </button>
+                    </form>
+                @endforeach
             @endif
+
+
 
 
         </div>
