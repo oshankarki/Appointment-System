@@ -23,6 +23,7 @@ Route::get('/', function () {
 
 Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/doctor', [App\Http\Controllers\HomeController::class, 'doctorIndex'])->name('doctor.home.index');
 
 
 //role
@@ -46,6 +47,16 @@ Route::middleware('superAdmin')->group(function(){
     Route::put('/superadmin/profileUpdate', [App\Http\Controllers\DoctorController::class, 'update'])->name('super_admin.profile.update');
     Route::get('/superadmin/changePassword', [App\Http\Controllers\DoctorController::class, 'changePassword'])->name('superadmin.password.change');
     Route::put('/superadmin/updatePassword', [App\Http\Controllers\DoctorController::class, 'updatePassword'])->name('superadmin.password.update');
+    Route::get('/menu/create', [App\Http\Controllers\MenuController::class, 'create'])->name('menu.create');
+    Route::post('/menu/store', [App\Http\Controllers\MenuController::class, 'store'])->name('menu.store');
+    Route::get('/menu', [App\Http\Controllers\MenuController::class, 'index'])->name('menu.index');
+    //route to edit data
+    Route:: get('menu/{id}/edit',[\App\Http\Controllers\MenuController::class,'edit'])->name('menu.edit');
+    //route to update data
+    Route:: put('menu/{id}',[\App\Http\Controllers\MenuController::class,'update'])->name('menu.update');
+    Route:: delete('menu/{id}',[\App\Http\Controllers\MenuController::class,'destroy'])->name('menu.destroy');
+
+
 
 });
 
