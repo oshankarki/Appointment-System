@@ -6,19 +6,16 @@
         <div class="container">
             <h1>Welcome to MediBook</h1>
             <h2>Make a appointment with experienced doctors</h2>
-            <a href="#about" class="btn-get-started scrollto">Get Started</a>
         </div>
     </section><!-- End Hero -->
 <section id="why-us" class="why-us">
     <div class="container">
-
         <div class="row">
             <div class="col-lg-4 d-flex align-items-stretch">
                 <div class="content">
                     <h3>Why Choose MediBook?</h3>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Duis aute irure dolor in reprehenderit
-                        Asperiores dolores sed et. Tenetur quia eos. Autem tempore quibusdam vel necessitatibus optio ad corporis.
+                       Medibook provides integrated solutions that redefine how you capture and analyze your organization’s risk, claims, safety, quality, and compliance data. Workflow and automation tools make your team more efficient, help to simplify insurance management, improve the productivity of your claims team, and reduce administrative burden, allowing staff to spend more time on patient care.
                     </p>
                     <div class="text-center">
                         <a href="#" class="more-btn">Learn More <i class="bx bx-chevron-right"></i></a>
@@ -31,22 +28,22 @@
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-receipt"></i>
-                                <h4>Corporis voluptates sit</h4>
-                                <p>Consequuntur sunt aut quasi enim aliquam quae harum pariatur laboris nisi ut aliquip</p>
+                                <h4>Patient Safety & Quality</h4>
+                                <p>Manage patient safety and quality initiatives in one consolidated, secure system.</p>
                             </div>
                         </div>
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-cube-alt"></i>
-                                <h4>Ullamco laboris ladore pan</h4>
-                                <p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt</p>
+                                <h4>Healthcare Claims Management & Administration</h4>
+                                <p>Comprehensive claims management for the entire claims life cycle, across all lines of coverage.</p>
                             </div>
                         </div>
                         <div class="col-xl-4 d-flex align-items-stretch">
                             <div class="icon-box mt-4 mt-xl-0">
                                 <i class="bx bx-images"></i>
-                                <h4>Labore consequatur</h4>
-                                <p>Aut suscipit aut cum nemo deleniti aut omnis. Doloribus ut maiores omnis facere</p>
+                                <h4>Healthcare Insurance Management</h4>
+                                <p>Manage insurance policies and programs across all lines of coverage.</p>
                             </div>
                         </div>
                     </div>
@@ -60,8 +57,8 @@
     <div class="container">
 
         <div class="section-title">
-            <h2>Doctors</h2>
-            <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+            <h2>Appointments with Top Doctors</h2>
+            <p>200+ experienced medical practitioners available for video consultation and appointment.</p>
         </div>
 
         <div class="row">

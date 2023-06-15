@@ -9,6 +9,9 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
     <link rel="stylesheet" href="{{asset('assets/dist/css/adminlte.min.css')}}">
+    <link href="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/css/nepali.datepicker.v4.0.1.min.css"  rel="stylesheet" type="text/css"/>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/nepali-datepicker@2.0.0/dist/css/nepali-datepicker.min.css">
 
     <!-- Favicons -->
     <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
@@ -27,6 +30,7 @@
     <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
     <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
 
     <!-- Template Main CSS File -->
     <link href="{{asset('assets/css/style.css')}}" rel="stylesheet">\
@@ -50,18 +54,40 @@
 
         <div class="d-none d-lg-flex social-links align-items-center">
             @if(Auth::user())
-                <a href="{{route("patient.profile")}}" class="twitter">{{Auth::user()->name}}</a>
-                <a class="twitter" href="{{ route('logout') }}"
-                   onclick="event.preventDefault();
-            document.getElementById('logout-form').submit();">
-                    Logout
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
-                </form>
+                @if(Auth::user()->role_id == 3)
+                    <a href="{{ route("patient.profile") }}" class="twitter">{{ Auth::user()->name }}</a>
+                    <a class="twitter" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @elseif(Auth::user()->role_id == 2)
+                    <a href="{{route("doctors.home")}}" class="twitter">Dashboard</a>
+                    <a class="twitter" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @elseif(Auth::user()->role_id == 1)
+                    <a href="{{route('home')}}" class="twitter">Dashboard</a>
+                    <a class="twitter" href="{{ route('logout') }}"
+                       onclick="event.preventDefault();
+                    document.getElementById('logout-form').submit();">
+                        Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+                @endif
             @else
-                <a href="{{route('login')}}" class="twitter">Login</a>
-                <a href="{{route('register')}}" class="twitter">Register</a>
+                <a href="{{ route('login') }}" class="twitter">Login</a>
+                <a href="{{ route('register') }}" class="twitter">Register</a>
             @endif
             <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
             <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
@@ -128,7 +154,7 @@
 
                 <div class="col-lg-4 col-md-6 footer-newsletter">
                     <h4>Join Our Newsletter</h4>
-                    <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+                    <p>MediBook is the quickest and easiest way to book appointment and consult online with top doctors of Nepal.</p>
                     <form action="" method="post">
                         <input type="email" name="email"><input type="submit" value="Subscribe">
                     </form>
@@ -164,6 +190,11 @@
 <script src="{{asset('assets/vendor/glightbox/js/glightbox.min.js')}}"></script>
 <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
 <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+<script src="http://nepalidatepicker.sajanmaharjan.com.np/nepali.datepicker/js/nepali.datepicker.v4.0.1.min.js" type="text/javascript"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nepali-datepicker@2.0.0/dist/js/nepali-datepicker.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/nepali-date-converter-js@1.1.3/dist/nepali-date-converter.min.js"></script>
+<script src="https://unpkg.com/nepali-moment@1.0.0/dist/nepali-moment.min.js"></script>
 
 <!-- Template Main JS File -->
 <script src="{{('asset(assets/js/main.js')}}"></script>

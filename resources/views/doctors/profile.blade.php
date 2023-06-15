@@ -133,7 +133,7 @@
                     <div class="about-text go-to">
                         <h3 class="dark-color">About Dr. {{Auth::user()->name}}</h3>
                         <h6 class="theme-color lead">Doctor of MediBook</h6>
-                        <h6 class="theme-color lead">@if(Auth::user()->app_status==0)
+                        <h6 class="theme-color lead">@if(Auth::user()->app_status==1)
                                 <p>Approved</p>
                             @else
                                 <p>Not Approved</p>

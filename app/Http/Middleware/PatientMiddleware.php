@@ -19,8 +19,6 @@ class PatientMiddleware
         if(auth()->user()) {
             if (auth()->user()->role_id == 3) {
                 return $next($request);
-            }else{
-                Auth::logout();
             }
         }
         return redirect('/');

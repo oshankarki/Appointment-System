@@ -9,16 +9,15 @@
     <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{asset('assets/login/css/login.css')}}">
+    <style>
+        .compulsory{
+            color:red;
+        }
+    </style>
 </head>
 <body>
 <main>
     <div class="container-fluid">
-        @if ($errors->has('status'))
-            <div class="alert alert-danger">
-                {{ $errors->first('status') }}
-            </div>
-        @endif
-
         <div class="row">
             <div class="col-sm-6 login-section-wrapper">
 
@@ -38,13 +37,18 @@
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
                         <div class="form-group">
-                            <label for="email">Email</label>
+                            <label for="email">Email<span class="compulsory">*</span></label>
                             <input type="email" name="email" id="email" class="form-control" placeholder="email@example.com">
                         </div>
                         <div class="form-group mb-4">
-                            <label for="password">Password</label>
+                            <label for="password">Password<span class="compulsory">*</span></label>
                             <input type="password" name="password" id="password" class="form-control" placeholder="Enter your passsword">
                         </div>
+                        @if ($errors->any())
+                            @foreach ($errors->all() as $error)
+                                <p class="text-danger">{{ $error }}</p>
+                            @endforeach
+                        @endif
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-block login-btn">
@@ -54,9 +58,9 @@
                             </div>
                         </div>
                     </form>
-                    <p class="login-wrapper-footer-text">Don't have an account? <a href="{{route('register')}}" class="text-reset">Register as a Patient</a></p>
-                    <p class="login-wrapper-footer-text">Want to be a doctor? <a href="{{route('registerDoctor')}}" class="text-reset">Register as a Doctor</a></p>
-
+                    <p class="login-wrapper-footer-text">Don't have an account? </p>
+                    <p class="login-wrapper-footer-text"><a href="{{route('registerDoctor')}}" class="text-reset">Register as a Doctor</a></p>
+                        <p class="login-wrapper-footer-text"><a href="{{route('register')}}" class="text-reset">Register as a Patient</a></p>
                 </div>
             </div>
             <div class="col-sm-6 px-0 d-none d-sm-block">
